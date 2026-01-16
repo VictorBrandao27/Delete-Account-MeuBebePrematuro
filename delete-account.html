@@ -1,159 +1,345 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Como Deletar Sua Conta - Meu Bebê Prematuro</title>
+    <title>Exclusão de Conta - Meu Bebê Prematuro</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
+            background: linear-gradient(135deg, #f0f8ff 0%, #f5f5f5 100%);
             padding: 20px;
+            line-height: 1.6;
         }
-        
+
         .container {
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
-        h1 {
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 48px;
             color: #333;
             margin-bottom: 10px;
-            font-size: 24px;
         }
-        
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
-        }
-        
-        .section {
-            margin-bottom: 30px;
-        }
-        
-        .section h2 {
-            color: #333;
+
+        .header .subtitle {
             font-size: 18px;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 8px;
+            color: #666;
         }
-        
-        .section p {
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #667eea;
+        }
+
+        .card.warning {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .card.info {
+            border-left-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .card.success {
+            border-left-color: #10b981;
+            background: #f0fdf4;
+        }
+
+        .card h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card p {
             color: #555;
-            line-height: 1.8;
             margin-bottom: 12px;
         }
-        
-        .section ol, .section ul {
+
+        .card ol, .card ul {
             color: #555;
-            line-height: 1.8;
-            margin-left: 20px;
+            margin-left: 24px;
+            margin-bottom: 16px;
         }
-        
-        .section li {
+
+        .card li {
             margin-bottom: 8px;
         }
-        
-        .highlight {
-            background: #fff3cd;
-            padding: 15px;
-            border-left: 4px solid #ffc107;
-            border-radius: 4px;
-            margin: 20px 0;
+
+        .card strong {
+            color: #333;
+            font-weight: 600;
         }
-        
-        .highlight strong {
+
+        .icon {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+
+        .contact-box strong {
+            display: block;
+            margin-bottom: 8px;
             color: #333;
         }
-        
-        .contact {
-            background: #e7f3ff;
-            padding: 15px;
-            border-left: 4px solid #2196F3;
-            border-radius: 4px;
-            margin-top: 20px;
-        }
-        
-        .contact p {
-            margin: 0;
-        }
-        
-        .contact a {
-            color: #2196F3;
+
+        .contact-box a {
+            color: #3b82f6;
             text-decoration: none;
+            font-weight: 600;
         }
-        
-        .contact a:hover {
+
+        .contact-box a:hover {
             text-decoration: underline;
         }
-        
-        footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            text-align: center;
-            color: #999;
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .step-content h3 {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .data-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .data-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+
+        .data-item::before {
+            content: "";
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            flex-shrink: 0;
             font-size: 12px;
+            font-weight: bold;
+        }
+
+        .data-item span {
+            font-size: 14px;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        footer p {
+            margin: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .card h2 {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🗑️ Como Deletar Sua Conta</h1>
-        <p class="subtitle">Meu Bebê Prematuro</p>
-        
-        <div class="section">
-            <h2>Deletar Conta Dentro do App</h2>
-            <p>A forma mais simples de deletar sua conta é diretamente pelo aplicativo:</p>
-            <ol>
-                <li>Abra o app <strong>Meu Bebê Prematuro</strong></li>
-                <li>Faça login com suas credenciais</li>
-                <li>Acesse a aba <strong>Perfil</strong></li>
-                <li>Role até o final da página</li>
-                <li>Clique no botão <strong>"Apagar todos os dados"</strong></li>
-                <li>Confirme a exclusão seguindo as instruções</li>
-                <li>Sua conta será deletada imediatamente</li>
-            </ol>
+        <div class="header">
+            <h1>Exclusão de Conta</h1>
+            <p class="subtitle">Meu Bebê Prematuro</p>
         </div>
-        
-        <div class="section">
-            <h2>O que Acontece com Meus Dados?</h2>
-            <ul>
-                <li><strong>Conta:</strong> Desativada imediatamente</li>
-                <li><strong>Dados pessoais:</strong> Deletados em até 30 dias</li>
-                <li><strong>Informações do bebê:</strong> Removidas completamente</li>
-                <li><strong>Registros anônimos:</strong> Mantidos apenas para fins estatísticos</li>
-                <li><strong>Confirmação:</strong> Você receberá um email de confirmação</li>
-            </ul>
+
+        <div class="card warning">
+            <h2><span class="icon"></span> Informações Importantes</h2>
+            <p>Ao excluir sua conta, <strong>todos os seus dados serão permanentemente removidos</strong> de nossos servidores.</p>
+            <p>Esta ação é <strong>irreversível e não pode ser desfeita</strong>.</p>
         </div>
-        
-        <div class="highlight">
-            <strong>⚠️ Importante:</strong> Esta ação é irreversível e não pode ser desfeita. Certifique-se de que deseja continuar antes de confirmar a exclusão.
-        </div>
-        
-        <div class="section">
-            <h2>Precisa de Ajuda?</h2>
-            <p>Se você tiver dificuldades para deletar sua conta ou tiver outras questões, entre em contato conosco:</p>
-            <div class="contact">
-                <p><strong>Email:</strong> <a href="mailto:suporte@meubebepre maturo.com.br">suporte@meubebepre maturo.com.br</a></p>
-                <p style="margin-top: 8px;">Responderemos sua solicitação em até 2 dias úteis.</p>
+
+        <div class="card">
+            <h2><span class="icon"></span> O que será deletado?</h2>
+            <p>Ao solicitar a exclusão de sua conta, os seguintes dados serão removidos:</p>
+            <div class="data-list">
+                <div class="data-item"><span>Perfil e dados pessoais</span></div>
+                <div class="data-item"><span>Informações dos bebês</span></div>
+                <div class="data-item"><span>Histórico de desenvolvimento</span></div>
+                <div class="data-item"><span>Registros de rastreamento</span></div>
+                <div class="data-item"><span>Fotos e mídia</span></div>
+                <div class="data-item"><span>Histórico de conversas</span></div>
+                <div class="data-item"><span>Preferências e lembretes</span></div>
             </div>
         </div>
-        
+
+        <div class="card info">
+            <h2><span class="icon"></span> Como deletar sua conta</h2>
+            <p>Siga esses passos para solicitar a exclusão de sua conta:</p>
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Abra o aplicativo</h3>
+                    <p>Inicie o app Meu Bebê Prematuro e faça login</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Acesse seu Perfil</h3>
+                    <p>Toque no ícone de perfil no menu inferior</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Encontre a opção de exclusão</h3>
+                    <p>Desça na página e procure por "Excluir Conta" ou "Solicitar Exclusão"</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Leia o aviso de exclusão</h3>
+                    <p>Revise cuidadosamente as informações sobre a exclusão permanente</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Confirme sua identidade</h3>
+                    <p>Digite sua senha ou use autenticação biométrica</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h3>Confirme a exclusão</h3>
+                    <p>Clique no botão final para solicitar a exclusão</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">7</div>
+                <div class="step-content">
+                    <h3>Valide por email</h3>
+                    <p>Verifique seu email e clique no link de confirmação. Sua conta será deletada em até 30 dias.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card success">
+            <h2><span class="icon"></span> Privacidade e Segurança</h2>
+            <p>Quando você deleta sua conta:</p>
+            <ul>
+                <li>Todos os dados pessoais são permanentemente removidos</li>
+                <li>Os backups antigos são mantidos por 90 dias depois destruídos</li>
+                <li>Você é desconectado de todos os dispositivos imediatamente</li>
+                <li>Para de receber notificações e emails</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon"></span> Quer seus dados antes de deletar?</h2>
+            <p>Se você deseja fazer backup de seus dados antes de excluir a conta:</p>
+            <ol>
+                <li>Acesse seu Perfil no aplicativo</li>
+                <li>Procure por "Baixar Meus Dados"</li>
+                <li>Confirme sua identidade</li>
+                <li>Receberá um arquivo ZIP com todos os seus dados em até 48 horas</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon"></span> Precisa de ajuda?</h2>
+            <p>Se você tem dúvidas sobre a exclusão de conta ou enfrenta problemas:</p>
+            <div class="contact-box">
+                <strong>Entre em contato conosco:</strong>
+                <p> <a href="mailto:suporte@meubebeprematuro.com.br">suporte@meubebeprematuro.com.br</a></p>
+                <p style="font-size: 14px; color: #666; margin-top: 8px;">Responderemos sua solicitação em até 24 horas</p>
+            </div>
+        </div>
+
         <footer>
-            <p>Meu Bebê Prematuro © 2026 | Todos os direitos reservados</p>
+            <p>Meu Bebê Prematuro  2026 | Todos os direitos reservados</p>
+            <p>Versão: 2.0 | Última atualização: Janeiro 2026</p>
         </footer>
     </div>
 </body>
